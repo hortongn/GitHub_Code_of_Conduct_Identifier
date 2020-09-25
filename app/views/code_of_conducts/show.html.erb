@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Path:</strong>
+  <%= @code_of_conduct.path %>
+</p>
+
+<p>
+  <strong>Sample text:</strong>
+  <%= @code_of_conduct.sample_text %>
+</p>
+
+<p>
+  <strong>Repository:</strong>
+  <%= @code_of_conduct.repository.login %>/<%= @code_of_conduct.repository.name %>
+</p>
+
+<%= link_to 'Edit', edit_code_of_conduct_path(@code_of_conduct) %> |
+<%= link_to 'Back', code_of_conducts_path %>

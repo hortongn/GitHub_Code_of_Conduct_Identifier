@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_23_004410) do
+ActiveRecord::Schema.define(version: 2020_09_24_010834) do
+
+  create_table "code_of_conducts", force: :cascade do |t|
+    t.string "path"
+    t.text "sample_text"
+    t.integer "repository_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["repository_id"], name: "index_code_of_conducts_on_repository_id"
+  end
 
   create_table "repositories", force: :cascade do |t|
     t.string "login"
