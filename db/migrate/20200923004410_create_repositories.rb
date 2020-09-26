@@ -6,6 +6,7 @@ class CreateRepositories < ActiveRecord::Migration[5.2]
       t.string :url
       t.integer :stars
       t.text :description
+      t.belongs_to :code_of_conduct, foreign_key: true
 
       t.timestamps
     end

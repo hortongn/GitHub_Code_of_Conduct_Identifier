@@ -69,6 +69,6 @@ class CodeOfConductsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def code_of_conduct_params
-      params.require(:code_of_conduct).permit(:path, :sample_text, :repository_id)
+      params.require(:code_of_conduct).permit(:path, :sample_text)
     end
 end

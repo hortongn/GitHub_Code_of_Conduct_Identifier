@@ -69,6 +69,6 @@ class RepositoriesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def repository_params
-      params.require(:repository).permit(:login, :name, :url, :stars, :description)
+      params.require(:repository).permit(:login, :name, :url, :stars, :description, :code_of_conduct_id)
     end
 end
