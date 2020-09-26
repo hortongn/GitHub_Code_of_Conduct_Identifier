@@ -6,7 +6,6 @@
   <thead>
     <tr>
       <th>Path</th>
-      <th>Sample text</th>
       <th>Type</th>
       <th>Repository</th>
       <th colspan="3"></th>
@@ -17,7 +16,6 @@
     <% @code_of_conducts.each do |code_of_conduct| %>
       <tr>
         <td><%= code_of_conduct.path %></td>
-        <td><%= code_of_conduct.sample_text %></td>
         <td><%= code_of_conduct.code_of_conduct_type.name %></td>
         <td><%= code_of_conduct.repository.login %>/<%= code_of_conduct.repository.name %></td>
         <td><%= link_to 'Show', code_of_conduct %></td>
