@@ -17,7 +17,7 @@ class CodeOfConductsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create code_of_conduct" do
     assert_difference('CodeOfConduct.count') do
-      post code_of_conducts_url, params: { code_of_conduct: { path: @code_of_conduct.path, repository_id: @code_of_conduct.repository_id, sample_text: @code_of_conduct.sample_text } }
+      post code_of_conducts_url, params: { code_of_conduct: { path: @code_of_conduct.path, code_of_conduct_type_id: @code_of_conduct.code_of_conduct_type_id, repository_id: @code_of_conduct.repository_id, sample_text: @code_of_conduct.sample_text } }
     end
 
     assert_redirected_to code_of_conduct_url(CodeOfConduct.last)
@@ -34,7 +34,7 @@ class CodeOfConductsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update code_of_conduct" do
-    patch code_of_conduct_url(@code_of_conduct), params: { code_of_conduct: { path: @code_of_conduct.path, repository_id: @code_of_conduct.repository_id, sample_text: @code_of_conduct.sample_text } }
+    patch code_of_conduct_url(@code_of_conduct), params: { code_of_conduct: { path: @code_of_conduct.path, code_of_conduct_type_id: @code_of_conduct.code_of_conduct_type_id, repository_id: @code_of_conduct.repository_id, sample_text: @code_of_conduct.sample_text } }
     assert_redirected_to code_of_conduct_url(@code_of_conduct)
   end
 

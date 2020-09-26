@@ -9,4 +9,8 @@ class CodeOfConductTest < ActiveSupport::TestCase
   test '#repository' do
     assert_equal 'MyString', @code_of_conduct.repository.name
   end
+
+  test '#code_of_conduct_type' do
+    assert_equal 'MyString', @code_of_conduct.code_of_conduct_type.name
+  end
 end

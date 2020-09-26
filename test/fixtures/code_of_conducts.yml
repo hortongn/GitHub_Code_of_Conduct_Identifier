@@ -4,8 +4,10 @@ one:
   path: MyString
   sample_text: MyText
   repository: one
+  code_of_conduct_type: one
 
 two:
   path: MyString
   sample_text: MyText
   repository: two
+  code_of_conduct_type: two
