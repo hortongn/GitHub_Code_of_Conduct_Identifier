@@ -10,5 +10,15 @@
   <%= @code_of_conduct_type.url %>
 </p>
 
+<p>
+  <strong>Fingerprint 1:</strong>
+  <%= @code_of_conduct_type.fingerprint_1 %>
+</p>
+
+<p>
+  <strong>Fingerprint 2:</strong>
+  <%= @code_of_conduct_type.fingerprint_2 %>
+</p>
+
 <%= link_to 'Edit', edit_code_of_conduct_type_path(@code_of_conduct_type) %> |
 <%= link_to 'Back', code_of_conduct_types_path %>
