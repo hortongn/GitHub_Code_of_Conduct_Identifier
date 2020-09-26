@@ -1,0 +1,27 @@
+<%= form_with(model: code_of_conduct_type, local: true) do |form| %>
+  <% if code_of_conduct_type.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(code_of_conduct_type.errors.count, "error") %> prohibited this code_of_conduct_type from being saved:</h2>
+
+      <ul>
+      <% code_of_conduct_type.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :url %>
+    <%= form.text_field :url %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

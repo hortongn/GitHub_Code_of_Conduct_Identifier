@@ -1,0 +1,2 @@
+class CodeOfConductType < ApplicationRecord
+end

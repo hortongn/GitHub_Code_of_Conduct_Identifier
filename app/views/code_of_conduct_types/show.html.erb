@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @code_of_conduct_type.name %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @code_of_conduct_type.url %>
+</p>
+
+<%= link_to 'Edit', edit_code_of_conduct_type_path(@code_of_conduct_type) %> |
+<%= link_to 'Back', code_of_conduct_types_path %>
