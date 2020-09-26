@@ -18,8 +18,8 @@
       <tr>
         <td><%= code_of_conduct.path %></td>
         <td><%= code_of_conduct.sample_text %></td>
-        <td><%= code_of_conduct.code_of_conduct_type %></td>
-        <td><%= code_of_conduct.repository %></td>
+        <td><%= code_of_conduct.code_of_conduct_type.name %></td>
+        <td><%= code_of_conduct.repository.login %>/<%= code_of_conduct.repository.name %></td>
         <td><%= link_to 'Show', code_of_conduct %></td>
         <td><%= link_to 'Edit', edit_code_of_conduct_path(code_of_conduct) %></td>
         <td><%= link_to 'Destroy', code_of_conduct, method: :delete, data: { confirm: 'Are you sure?' } %></td>
