@@ -16,7 +16,6 @@ class CodeOfConductsTest < ApplicationSystemTestCase
 
     fill_in "Path", with: @code_of_conduct.path
     fill_in "Repository", with: @code_of_conduct.repository_id
-    fill_in "Sample text", with: @code_of_conduct.sample_text
     click_on "Create Code of conduct"
 
     assert_text "Code of conduct was successfully created"
@@ -29,7 +28,6 @@ class CodeOfConductsTest < ApplicationSystemTestCase
 
     fill_in "Path", with: @code_of_conduct.path
     fill_in "Repository", with: @code_of_conduct.repository_id
-    fill_in "Sample text", with: @code_of_conduct.sample_text
     click_on "Update Code of conduct"
 
     assert_text "Code of conduct was successfully updated"
