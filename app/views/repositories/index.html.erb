@@ -19,7 +19,7 @@
       <tr>
         <td><%= repository.login %></td>
         <td><%= repository.name %></td>
-        <td><%= repository.url %></td>
+        <td><a href="https://github.com/<%= repository.login %>/<%= repository.name %>">https://github.com/<%= repository.login %>/<%= repository.name %></a></td>
         <td><%= repository.stars %></td>
         <td><%= repository.description %></td>
         <td><%= link_to 'Show', repository %></td>
