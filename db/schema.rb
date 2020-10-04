@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_26_210757) do
+ActiveRecord::Schema.define(version: 2020_10_04_011225) do
 
   create_table "code_of_conduct_types", force: :cascade do |t|
     t.string "name"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2020_09_26_210757) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "code_of_conduct_type_id"
+    t.string "url"
     t.index ["code_of_conduct_type_id"], name: "index_code_of_conducts_on_code_of_conduct_type_id"
     t.index ["repository_id"], name: "index_code_of_conducts_on_repository_id"
   end
