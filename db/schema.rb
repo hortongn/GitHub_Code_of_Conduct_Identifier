@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_04_011225) do
+ActiveRecord::Schema.define(version: 2020_10_06_003802) do
 
   create_table "code_of_conduct_types", force: :cascade do |t|
     t.string "name"
@@ -38,6 +38,14 @@ ActiveRecord::Schema.define(version: 2020_10_04_011225) do
     t.string "url"
     t.integer "stars"
     t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "repository_set_id"
+    t.index ["repository_set_id"], name: "index_repositories_on_repository_set_id"
+  end
+
+  create_table "repository_sets", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

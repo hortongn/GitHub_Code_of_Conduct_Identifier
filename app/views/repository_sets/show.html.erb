@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Set Name:</strong>
+  <%= @repository_set.name %>
+</p>
+
+<ul>
+  <% @repository_set.repositories.each do |repository| %>
+    <li><%= link_to repository.name, repository %></li>
+  <% end %>
+</ul>
+
+<%= link_to 'Edit', edit_repository_set_path(@repository_set) %> |
+<%= link_to 'Back', repository_sets_path %>

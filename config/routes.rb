@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :repository_sets
   resources :code_of_conduct_types
   resources :code_of_conducts
   resources :repositories

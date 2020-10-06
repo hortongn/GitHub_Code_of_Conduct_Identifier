@@ -16,6 +16,11 @@
 </p>
 
 <p>
+  <strong>Set:</strong>
+  <%= @repository.repository_set.nil? ? '<none>' : @repository.repository_set.name %>
+</p>
+
+<p>
   <strong>Stars:</strong>
   <%= @repository.stars %>
 </p>

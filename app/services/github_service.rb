@@ -18,9 +18,9 @@ class GithubService
     return true unless CodeOfConduct.where(path: item.path, repository_id: repository.id).blank?
   end
 
-  def get_codes_of_conduct(query, repository)
-    search_repository(query, repository).each do |path|
-      CodeOfConduct.create(path: path, repository_id: repository.id, code_of_conduct_type_id: identify_code_of_conduct_type)
-    end
-  end
+#  def get_codes_of_conduct(query, repository)
+#    search_repository(query, repository).each do |path|
+#      CodeOfConduct.create(path: path, repository_id: repository.id, code_of_conduct_type_id: identify_code_of_conduct_type)
+#    end
+#  end
 end
