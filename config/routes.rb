@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root 'repository_sets#index'
+  resources :repository_loaders
   resources :repository_sets
   resources :code_of_conduct_types
   resources :code_of_conducts
