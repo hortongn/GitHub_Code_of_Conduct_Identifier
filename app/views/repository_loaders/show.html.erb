@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Repository list:</strong>
+  <%= @repository_loader.repository_list %>
+</p>
+
+<%= link_to 'Edit', edit_repository_loader_path(@repository_loader) %> |
+<%= link_to 'Back', repository_loaders_path %>

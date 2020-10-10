@@ -61,7 +61,13 @@ class RepositorySetsController < ApplicationController
     end
   end
 
+  def find_codes_of_conduct
+    GithubService.new.iterate_repositories(params['repository_set_id'])
+    redirect_to code_of_conducts_path
+  end
+
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_repository_set
       @repository_set = RepositorySet.find(params[:id])

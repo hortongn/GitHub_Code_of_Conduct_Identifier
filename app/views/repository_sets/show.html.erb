@@ -7,9 +7,13 @@
 
 <ul>
   <% @repository_set.repositories.each do |repository| %>
-    <li><%= link_to repository.name, repository %></li>
+    <li><%= link_to repository.login + '/' + repository.name, repository %></li>
   <% end %>
 </ul>
+
+<p>
+  <%= link_to 'Run this set', find_codes_of_conduct_path(@repository_set.id) %>
+</p>
 
 <%= link_to 'Edit', edit_repository_set_path(@repository_set) %> |
 <%= link_to 'Back', repository_sets_path %>

@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Repository Loaders</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Repository list</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @repository_loaders.each do |repository_loader| %>
+      <tr>
+        <td><%= repository_loader.repository_list %></td>
+        <td><%= link_to 'Show', repository_loader %></td>
+        <td><%= link_to 'Edit', edit_repository_loader_path(repository_loader) %></td>
+        <td><%= link_to 'Destroy', repository_loader, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Repository Loader', new_repository_loader_path %>

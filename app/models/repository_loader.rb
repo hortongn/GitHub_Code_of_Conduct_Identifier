@@ -1,0 +1,2 @@
+class RepositoryLoader < ApplicationRecord
+end

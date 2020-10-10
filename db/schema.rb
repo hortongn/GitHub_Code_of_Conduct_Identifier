@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_06_003802) do
+ActiveRecord::Schema.define(version: 2020_10_07_011110) do
 
   create_table "code_of_conduct_types", force: :cascade do |t|
     t.string "name"
@@ -42,6 +42,13 @@ ActiveRecord::Schema.define(version: 2020_10_06_003802) do
     t.datetime "updated_at", null: false
     t.integer "repository_set_id"
     t.index ["repository_set_id"], name: "index_repositories_on_repository_set_id"
+  end
+
+  create_table "repository_loaders", force: :cascade do |t|
+    t.text "repository_list"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "set_name"
   end
 
   create_table "repository_sets", force: :cascade do |t|

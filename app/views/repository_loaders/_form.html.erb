@@ -1,0 +1,27 @@
+<%= form_with(model: repository_loader, local: true) do |form| %>
+  <% if repository_loader.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(repository_loader.errors.count, "error") %> prohibited this repository_loader from being saved:</h2>
+
+      <ul>
+      <% repository_loader.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :set_name %>
+    <%= form.text_field :set_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :repository_list, "List of repositories (login/name)" %>
+    <%= form.text_area :repository_list %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Create Repository Set" %>
+  </div>
+<% end %>

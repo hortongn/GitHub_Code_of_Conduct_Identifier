@@ -1,5 +1,12 @@
 class GithubService
 
+  def iterate_repositories(repository_set_id)
+    repository_set = RepositorySet.find(repository_set_id)
+    repository_set.repositories.each do |repo|
+      GithubService.new.search_repository(repo)
+    end
+  end
+
   def search_repository(repository)
     CodeOfConductType.all.each do |code_of_conduct_type|
       @github = Octokit::Client.new(:netrc => true)
