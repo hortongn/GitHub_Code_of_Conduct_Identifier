@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Code Of Conducts by Set</h1>
+<h1>Code Of Conducts for Set <%= RepositorySet.find(params["repository_set_id"]).name %></h1>
 
 <table>
   <thead>
@@ -26,6 +26,4 @@
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Code Of Conduct', new_code_of_conduct_path %>
+<br />
