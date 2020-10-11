@@ -63,7 +63,7 @@ class RepositorySetsController < ApplicationController
 
   def find_codes_of_conduct
     GithubService.new.iterate_repositories(params['repository_set_id'])
-    redirect_to code_of_conducts_path
+    redirect_to code_of_conduct_sets_path(params['repository_set_id'])
   end
 
   private

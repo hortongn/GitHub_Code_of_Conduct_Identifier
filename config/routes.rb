@@ -8,4 +8,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   get "find_codes_of_conduct/:repository_set_id", to: "repository_sets#find_codes_of_conduct", as: "find_codes_of_conduct"
+
+  get "code_of_conduct_sets/:repository_set_id", to: "code_of_conducts#set", as: "code_of_conduct_sets"
+
 end

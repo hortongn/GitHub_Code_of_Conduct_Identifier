@@ -61,6 +61,13 @@ class CodeOfConductsController < ApplicationController
     end
   end
 
+  def set
+    @code_of_conducts = []
+    CodeOfConduct.all.each do |code_of_conduct|
+      @code_of_conducts << code_of_conduct if code_of_conduct.repository.repository_set_id.to_s == params['repository_set_id']
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_code_of_conduct
