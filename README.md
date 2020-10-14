@@ -12,16 +12,32 @@ RQ1: What type of codes of conduct are used by popular open source projects?
 
 RQ2: How do popular open source projects cite their codes of conduct?
 
-RQ3: 
+RQ3: How reliably can codes of conduct be programatically identified?
 
 ## Method
 
 Intro?
 
 ### Data Source (Particpants)
+
+This study used data from GitHub.com.  GitHub is a collaborative software service that provides hosting for source code management and version control.  Because it facilitates collaborative development in a transparent environment, GitHub is a popular host for open source projects.  Hence, GitHub was a good source of data for this study.  There are several projects that have colleted GitHub data into datasets to faciliate research.  However, they are typically focused on transactional events (commits, comments, etc.) and only provide a snapshop of a certain point in time.  Given that some software repositories change very rapidly, existing datasets become outdated very quickly. We therefore chose to use GitHub's API for this study and directly query the serivce's live data.
+
+GitHub's API provides an interface to most of the service's functions.  For this study in particular, we required the ability to search GitHub repositories for specific text in files or file names.  GitHub's Search API (https://docs.github.com/en/free-pro-team@latest/rest/reference/search) provided this functionality.  The Search API returns JSON results with a listing of files that match the query. 
+
+API Limitations
+* rate limit
+* 1000 results per search
+* queries must be <= 256 chars
+* only the default branch is searched
+* Only files smaller than 384 KB are searchable.
+
 * number (N = ?)
+* how I chose my set of repos
 * screening?  How selected?  exclusions?
 * basic demographics
+* ingested by the app into a database
+* db schema
+
 
 
 ### Apparatus (materials)
