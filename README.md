@@ -20,27 +20,20 @@ Intro?
 
 ### Data Source (Particpants)
 
-This study used data from GitHub.com.  GitHub is a collaborative software service that provides hosting for source code management and version control.  Because it facilitates collaborative development in a transparent environment, GitHub is a popular host for open source projects.  Hence, GitHub was a good source of data for this study.  There are several projects that have colleted GitHub data into datasets to faciliate research.  However, they are typically focused on transactional events (commits, comments, etc.) and only provide a snapshop of a certain point in time.  Given that some software repositories change very rapidly, existing datasets become outdated very quickly. We therefore chose to use GitHub's API for this study and directly query the serivce's live data.
+This study used data from GitHub.com.  GitHub is a collaborative software service that provides hosting for source code management and version control.  Because it facilitates collaborative development in a transparent environment, GitHub is a popular host for open source projects.  Hence, GitHub was a good source of data for this study.  There are several projects that have colleted GitHub data into datasets to faciliate research.  However, they are typically focused on transactional events (commits, comments, etc.) and only provide a snapshop of a certain point in time.  Given that some software repositories change very rapidly, existing datasets become outdated very quickly. We therefore chose to use GitHub's API for this study to directly query the serivce's live data.
 
-GitHub's API provides an interface to most of the service's functions.  For this study in particular, we required the ability to search GitHub repositories for specific text in files or file names.  GitHub's Search API (https://docs.github.com/en/free-pro-team@latest/rest/reference/search) provided this functionality.  The Search API returns JSON results with a listing of files that match the query. 
+GitHub's API provides an interface to most of the service's functions.  For this study in particular, we required the ability to search GitHub repositories for specific text in files or file names.  GitHub's Search API (https://docs.github.com/en/free-pro-team@latest/rest/reference/search) provided this functionality.  The Search API returns JSON results with a listing of files that match the query. For example, submitting the query "code of conduct" in:file repo:microsoft/test" will return all files in the microsoft/test repository that contain the text "code of conduct."  GitHub's API also provides the ability to search for files by filename.  
 
-API Limitations
-* rate limit
-* 1000 results per search
-* queries must be <= 256 chars
-* only the default branch is searched
-* Only files smaller than 384 KB are searchable.
+A sample size of 100 GitHub repositories was used for this study.  We created a list of the 100 most popular repositories by searching GitHub for repositories with the most stars.  Because the scope of this study is limited to open source projects, only software repositories with open source licenses were used.  A list of the repositories can be found at <>.
 
-* number (N = ?)
-* how I chose my set of repos
-* screening?  How selected?  exclusions?
-* basic demographics
-* ingested by the app into a database
-* db schema
-
-
+used format login/name
 
 ### Apparatus (materials)
+
+To answer the research questions, I developed a software application that accepts a list of GitHub software repositories as input and searches those repositories for codes of conduct.  The application attemps to identify the types of codes of conduct used and displays links to them.
+
+The application was developed using the Ruby on Rails framework.  Ruby on Rails allows for rapid software development and was therefore a good tool for this study with time constraints.  
+
 * the framework, gems, etc (why?
   * ruby on rails
   * rapid development
@@ -66,6 +59,8 @@ API Limitations
   * by file name
 * the hosting
   * AWS
+* ingested by the app into a database
+* db schema
 
 
 ### Procedure
@@ -88,6 +83,12 @@ API Limitations
 
 ## Limitations and Implications
 
+API Limitations
+* rate limit
+* 1000 results per search
+* queries must be <= 256 chars
+* only the default branch is searched
+* Only files smaller than 384 KB are searchable.
 ## Conclusions
 
 ## References
