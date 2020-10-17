@@ -62,7 +62,8 @@ class RepositorySetsController < ApplicationController
   end
 
   def find_codes_of_conduct
-    GithubService.new.iterate_repositories(params['repository_set_id'])
+    FindCodesOfConductJob.perform_later params['repository_set_id']
+    flash[:notice] = 'Codes of conduct are being found in the backgroud.  Reload this page later to see them.'
     redirect_to code_of_conduct_sets_path(params['repository_set_id'])
   end
 
