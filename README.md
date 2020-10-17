@@ -34,7 +34,7 @@ A sample size of 100 GitHub repositories was used for this study.  We created a 
 
 To answer the research questions, I developed a software application that accepts a list of GitHub software repositories as input and searches those repositories for codes of conduct.  The application attemps to identify the types of codes of conduct used and displays links to them.
 
-I chose to build the application using the Ruby on Rails framework.  Using the Model, View, Controller (MVC) architecture, Ruby on Rails allows for rapid software development and was therefore a good tool for a study under time constraints.  The application also utilizes the Octokit toolkit (http://octokit.github.io/octokit.rb/) to faciliate using the GitHub API.  To prevent abuse of the API, GItHub limits the number of API calls that can be made in a given ime period.  Fortuneately, Octokit allows for authenticated API calls, which increases the call rate.  However, the application still hit some API limits even when using an authenticated API.  This required me to insert pauses nto the application and causes the search feature to run artificially slowly.  TO alleviate this constraint I configured the API searches to run as background jobs.  Using the Sidekiq toolkit (https://sidekiq.org), the application can search code codes of conduct in the background without the user having to wait for the job to finish.
+I chose to build the application using the Ruby on Rails framework.  Using the Model, View, Controller (MVC) architecture, Ruby on Rails allows for rapid software development and was therefore a good tool for a study under time constraints.  All application content is stored in a relational database.  The application also utilizes the Octokit toolkit (http://octokit.github.io/octokit.rb/) to faciliate using the GitHub API.  To prevent abuse of the API, GItHub limits the number of API calls that can be made in a given ime period.  Fortuneately, Octokit allows for authenticated API calls, which increases the call rate.  However, the application still hit some API limits even when using an authenticated API.  This required me to insert pauses nto the application and causes the search feature to run artificially slowly.  TO alleviate this constraint I configured the API searches to run as background jobs.  Using the Sidekiq toolkit (https://sidekiq.org), the application can search code codes of conduct in the background without the user having to wait for the job to finish.
 
 The application uses several different models:
 
@@ -48,16 +48,13 @@ The application uses several different models:
 
 The application's GitHubService class performs the repository searching and identifies the codes of conduct.  The ID of a repository set is passed to the service.  As the service iterates through all repositories in the set, it makes GitHub Search API call for each repository.  The Search API attempts to find all files in the respoitory that match the fingerprint of one of the code of conduct types.  One of the code of conduct types has the simple fingerprint of "code of conduct" so that it will match any generic code of conduct in the repository.  For each found file, a new code of conduct object is created and associated with repository object. 
 
-* repository loader
-* diagram?
-* how I chose to find COCs
-  * identified vs unidentified
-  * by fingerprint
-  * by file name
-* the hosting
-  * AWS
-* ingested by the app into a database
-* db schema
+(search by file name)
+
+The application's RepositoryLoader class takes a text-based list of repositories in _login/name_ format and for each repository creates a new repository object.  All new repository objects are also added to a new repository set object.  
+
+hosting
+* AWS
+
 
 ### Procedure
 * starting the app/sidekiq
