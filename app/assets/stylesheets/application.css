@@ -27,3 +27,16 @@ h1 {
   padding-bottom: 1em;
   border-bottom: 1px solid #000;
 }
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+    color: blue;
+    text-decoration: none;
+}
+
+a:hover {
+  background-color: #fff;
+  text-decoration: underline;
+}
