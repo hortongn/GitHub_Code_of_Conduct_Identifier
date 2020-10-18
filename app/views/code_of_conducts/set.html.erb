@@ -1,13 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Code Of Conducts for Set <%= RepositorySet.find(params["repository_set_id"]).name %></h1>
+<h2>Codes Of Conduct for Set <%= RepositorySet.find(params["repository_set_id"]).name %></h2>
 
 <table>
   <thead>
     <tr>
+      <th>Repository</th>
       <th>Path</th>
       <th>Type</th>
-      <th>Repository</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -15,12 +15,9 @@
   <tbody>
     <% @code_of_conducts.each do |code_of_conduct| %>
       <tr>
+        <td><%= code_of_conduct.repository.login %>/<%= code_of_conduct.repository.name %></td>
         <td><a href="<%= code_of_conduct.url %>"><%= code_of_conduct.path %></a></td>
         <td><%= code_of_conduct.code_of_conduct_type.name %></td>
-        <td><%= code_of_conduct.repository.login %>/<%= code_of_conduct.repository.name %></td>
-        <td><%= link_to 'Show', code_of_conduct %></td>
-        <td><%= link_to 'Edit', edit_code_of_conduct_path(code_of_conduct) %></td>
-        <td><%= link_to 'Destroy', code_of_conduct, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

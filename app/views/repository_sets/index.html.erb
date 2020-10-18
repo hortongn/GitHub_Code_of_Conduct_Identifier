@@ -1,11 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Repository Sets</h1>
+<p>
+  <%= link_to 'Create New Repository Set', new_repository_loader_path %>
+</p>
 
 <table>
   <thead>
     <tr>
-      <th>Name</th>
+      <th>Existing Sets</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -13,9 +15,7 @@
   <tbody>
     <% @repository_sets.each do |repository_set| %>
       <tr>
-        <td><%= repository_set.name %></td>
-        <td><%= link_to 'Show', repository_set %></td>
-        <td><%= link_to 'Edit', edit_repository_set_path(repository_set) %></td>
+        <td><%= link_to repository_set.name, repository_set %></td>
         <td><%= link_to 'Destroy', repository_set, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
@@ -24,4 +24,3 @@
 
 <br>
 
-<%= link_to 'New Repository Set', new_repository_loader_path %>
