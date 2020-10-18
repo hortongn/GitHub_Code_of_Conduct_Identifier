@@ -57,22 +57,44 @@ hosting
 
 
 ### Procedure
-* starting the app/sidekiq
-  * seeds
+
+Prerequisite: ruby 2.5 or newer
+
+Clone and start the application:
+
+1. Clone the application<br />`git clone https://github.com/hortongn/IT_Project.git`
+
+1. Change to the application directory<br />`cd IT_Project`
+
+1. Install Bundler<br />`gem install bundler`
+
+1. Run Bundler<br />`bundle install`
+
+1. Run the migrations<br />`bundle exec rails db:migrate`
+
+1. Seed the database<br />`bundle exec rails db:seed`
+
+1. Start the application and background workers
+    * `redis-server`
+    * `bundle exec sidekiq`
+    * `bundle exec rails server`
+
+1. In your web browser visit http://localhost:3000
+
 * Step by step
   * the workflow
     * create a set
     * run the service
     * view the COCs
     * view stats
-* make sure someone else could do it
 * how long it took
 * when it was run
+
+## Analysis
+
 * explain how measurements were made and what calculations were performed
 * and state which statistical tests were done to analyze the data.
 * Does this actually test the hypothesis?
-
-## Analysis
 
 ## Limitations and Implications
 
