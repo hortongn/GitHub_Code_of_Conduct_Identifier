@@ -1,28 +1,20 @@
+<h2>Repository Set: <em><%= @repository_set.name %></em></h2>
+
 <p id="notice"><%= notice %></p>
 
-<h2>Repository Set: <%= @repository_set.name %></h2>
+<div class="options">
+  <%= button_to 'View codes of conduct', code_of_conduct_sets_path(@repository_set.id), method: :get %>
+  <%= button_to 'Run this set', find_codes_of_conduct_path(@repository_set.id), method: :get %>
+  <%= button_to 'Edit set name', edit_repository_set_path(@repository_set), method: :get %>
+</div>
 
 <p>
-  <%= link_to 'edit set name', edit_repository_set_path(@repository_set) %>
-</p>
-
-<p>
-  <%= link_to 'View codes of conduct for this set', code_of_conduct_sets_path(@repository_set.id) %>
-</p>
-
-<p>
-  <%= link_to 'Run this set', find_codes_of_conduct_path(@repository_set.id) %>
-</p>
-
-<%= link_to 'Back', repository_sets_path %>
-
-<p>
-  Repositories in this set:
+  GitHub repositories in this set:
 </p>
 
 <ul>
   <% @repository_set.repositories.each do |repository| %>
-    <li><%= link_to repository.login + '/' + repository.name, repository %></li>
+    <li><%= link_to repository.login + '/' + repository.name, "https://github.com/#{repository.login}/#{repository.name}" %></li>
   <% end %>
 </ul>
 

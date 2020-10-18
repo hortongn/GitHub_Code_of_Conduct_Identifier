@@ -19,13 +19,19 @@ th {
 }
 
 td {
-  padding-left: 0;
+  /* padding-left: 0; */
   padding-right: 2em;
 }
 
-h1 {
-  padding-bottom: 1em;
-  border-bottom: 1px solid #000;
+h1 a:link,
+h1 a:visited,
+h1 a:hover,
+h1 a:active {
+  color: #000;
+}
+
+h1, h2 {
+  font-weight: normal;
 }
 
 a:link,
@@ -39,4 +45,34 @@ a:active {
 a:hover {
   background-color: #fff;
   text-decoration: underline;
+}
+
+div.menu {
+  text-transform: uppercase;
+  padding-bottom: 1em;
+  border-bottom: 1px solid #000;
+}
+
+div.menu a {
+  padding-right: 1em;
+}
+
+.even {
+  background: #ddd;
+}
+
+.odd {
+  background: #fff;
+}
+
+.options form {
+  display: inline;
+}
+
+th {
+  font-weight: normal;
+}
+
+table {
+  margin-top: 1em;
 }

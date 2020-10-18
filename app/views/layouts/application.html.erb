@@ -12,6 +12,11 @@
   <body>
     <h1><%= link_to 'GitHub Code of Conduct Identifier', 'http://localhost:3000' %></h1>
 
+    <div class="menu">
+      <%= link_to 'Repository Sets', repository_sets_path %>
+      <%= link_to 'Code of Conduct Types', code_of_conduct_types_path %>
+    </div>
+
     <%= yield %>
   </body>
 </html>

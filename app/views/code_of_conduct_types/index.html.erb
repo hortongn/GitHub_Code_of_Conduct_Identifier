@@ -2,28 +2,26 @@
 
 <h2>Code Of Conduct Types</h2>
 
+<div class="options">
+  <%= button_to 'Create new code of conduct type', new_code_of_conduct_type_path, method: :get %>
+</div>
+
 <table>
   <thead>
     <tr>
       <th>Name</th>
-      <th>Url</th>
+      <th>Url to original</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @code_of_conduct_types.each do |code_of_conduct_type| %>
-      <tr>
-        <td><%= code_of_conduct_type.name %></td>
-        <td><%= code_of_conduct_type.url %></td>
-        <td><%= link_to 'Show', code_of_conduct_type %></td>
-        <td><%= link_to 'Edit', edit_code_of_conduct_type_path(code_of_conduct_type) %></td>
-        <td><%= link_to 'Destroy', code_of_conduct_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <tr class="<%= cycle("even", "odd") %>">
+        <td><%= link_to code_of_conduct_type.name, code_of_conduct_type %></td>
+        <td><%= link_to code_of_conduct_type.url, code_of_conduct_type.url %></td>
+        <td style="background-color: #fff;"><%= button_to 'Delete', code_of_conduct_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Code Of Conduct Type', new_code_of_conduct_type_path %>

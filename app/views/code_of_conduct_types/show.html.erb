@@ -1,9 +1,10 @@
+<h2>Code of Conduct Type: <em><%= @code_of_conduct_type.name %></em></h2>
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @code_of_conduct_type.name %>
-</p>
+<div class="options">
+  <%= button_to 'Edit code of conduct type', edit_code_of_conduct_type_path(@code_of_conduct_type), method: :get %>
+</div>
 
 <p>
   <strong>Url:</strong>
@@ -19,6 +20,3 @@
   <strong>Fingerprint 2:</strong>
   <%= @code_of_conduct_type.fingerprint_2 %>
 </p>
-
-<%= link_to 'Edit', edit_code_of_conduct_type_path(@code_of_conduct_type) %> |
-<%= link_to 'Back', code_of_conduct_types_path %>

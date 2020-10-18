@@ -1,7 +1,13 @@
+<h2>Repository Sets</h2>
+
 <p id="notice"><%= notice %></p>
 
 <p>
-  <%= link_to 'Create New Repository Set', new_repository_loader_path %>
+  <%= button_to 'Create New Repository Set', new_repository_loader_path, method: :get %>
+</p>
+
+<p>
+  Click on an exisitng set below to generate or view its codes of conduct:
 </p>
 
 <table>
@@ -16,7 +22,7 @@
     <% @repository_sets.each do |repository_set| %>
       <tr>
         <td><%= link_to repository_set.name, repository_set %></td>
-        <td><%= link_to 'Destroy', repository_set, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= button_to 'Delete', repository_set, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

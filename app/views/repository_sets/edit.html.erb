@@ -2,5 +2,4 @@
 
 <%= render 'form', repository_set: @repository_set %>
 
-<%= link_to 'Show', @repository_set %> |
-<%= link_to 'Back', repository_sets_path %>
+<%= button_to 'Cancel', repository_set_path(@repository_set.id), method: :get %>
