@@ -81,7 +81,14 @@ Clone and start the application:
 
 ### Procedure
 
-1. Click on 
+1. Click the `REPOSITORY SETS` navivation link
+1. On the Repository Sets page, click the `Create New Repository Set` button
+1. On the New Repository Set page
+    * Enter a name for the new set
+    * Paste in a list of GitHub repositories in login/name format (a sample list of repositories can be found at ...)
+    * Click the `Create Repository Set` button
+1. On the Repository Set page you will see the list of the GitHub repositories you added.  Click the "Run this set" button
+
 
 
 
