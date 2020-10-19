@@ -18,9 +18,7 @@ RQ3: How reliably can codes of conduct be programatically identified?
 
 ## Methodology
 
-Intro?
-
-### Data Source (Particpants)
+### Data Source
 
 This study used data from GitHub.com.  GitHub is a collaborative software service that provides hosting for source code management and version control.  Because it facilitates collaborative development in a transparent environment, GitHub is a popular host for open source projects.  Hence, GitHub was a good source of data for this study.  There are several projects that have colleted GitHub data into datasets to faciliate research.  However, they are typically focused on transactional events (commits, comments, etc.) and only provide a snapshop of a certain point in time.  Given that some software repositories change very rapidly, existing datasets become outdated very quickly. We therefore chose to use GitHub's API for this study to directly query the serivce's live data.
 
@@ -56,7 +54,7 @@ hosting
 * AWS
 
 
-### Procedure
+### Application Preparation
 
 Prerequisite: ruby 2.5 or newer
 
@@ -81,6 +79,13 @@ Clone and start the application:
 
 1. In your web browser visit http://localhost:3000
 
+### Procedure
+
+1. Click on 
+
+
+
+
 * Step by step
   * the workflow
     * create a set
@@ -90,12 +95,6 @@ Clone and start the application:
 * how long it took
 * when it was run
 
-## Analysis
-
-* explain how measurements were made and what calculations were performed
-* and state which statistical tests were done to analyze the data.
-* Does this actually test the hypothesis?
-
 ## Limitations and Implications
 
 API Limitations
@@ -104,6 +103,12 @@ API Limitations
 * queries must be <= 256 chars
 * only the default branch is searched
 * Only files smaller than 384 KB are searchable.
+
+## Analysis
+
+* explain how measurements were made and what calculations were performed
+* and state which statistical tests were done to analyze the data.
+* Does this actually test the hypothesis?
 
 ## Conclusions
 
