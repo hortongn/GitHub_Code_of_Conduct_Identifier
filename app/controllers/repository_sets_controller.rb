@@ -62,12 +62,21 @@ class RepositorySetsController < ApplicationController
   end
 
   def find_codes_of_conduct
+    delete_codes_of_conduct_for_set(params['repository_set_id'].to_i)
     FindCodesOfConductJob.perform_later params['repository_set_id']
     flash[:notice] = 'Codes of conduct are being found in the backgroud.  Reload this page later to see them.'
     redirect_to code_of_conduct_sets_path(params['repository_set_id'])
   end
 
   private
+
+    def delete_codes_of_conduct_for_set(repository_set_id)
+      CodeOfConduct.all.each do |code_of_conduct|
+        if Repository.find(code_of_conduct.repository_id).repository_set_id == repository_set_id
+          code_of_conduct.destroy
+        end
+      end
+    end
 
     # Use callbacks to share common setup or constraints between actions.
     def set_repository_set
