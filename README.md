@@ -1,4 +1,4 @@
-# IT Project
+# GitHub Code of Conduct Identifier
 
 ## Problem Statement
 
@@ -20,15 +20,15 @@ RQ3: How reliably can codes of conduct be programatically identified?
 
 ### Data Source
 
-This study used data from GitHub.com.  GitHub is a collaborative software service that provides hosting for source code management and version control.  Because it facilitates collaborative development in a transparent environment, GitHub is a popular host for open source projects.  Hence, GitHub was a good source of data for this study.  There are several projects that have colleted GitHub data into datasets to faciliate research.  However, they are typically focused on transactional events (commits, comments, etc.) and only provide a snapshop of a certain point in time.  Given that some software repositories change very rapidly, existing datasets become outdated very quickly. We therefore chose to use GitHub's API for this study to directly query the serivce's live data.
+The study used data from GitHub.com.  GitHub is a collaborative software service that provides hosting for source code management and version control.  Because it facilitates collaborative development in a transparent environment, GitHub is a popular host for open source projects.  Hence, GitHub was a good source of data for the study.  There are several projects that have colleted GitHub data into datasets to faciliate research.  However, they are typically focused on transactional events (commits, comments, etc.) and only provide a snapshop of a certain point in time.  Given that some software repositories change very rapidly, existing datasets become outdated very quickly. We therefore chose to use GitHub's API for the study to directly query the serivce's live data.
 
 GitHub's API provides an interface to most of the service's functions.  For this study in particular, we required the ability to search GitHub repositories for specific text in files or file names.  GitHub's Search API (https://docs.github.com/en/free-pro-team@latest/rest/reference/search) provided this functionality.  The Search API returns JSON results with a listing of files that match the query. For example, submitting the query "code of conduct" in:file repo:microsoft/test" will return all files in the microsoft/test repository that contain the text "code of conduct."  GitHub's API also provides the ability to search for files by filename.  
 
-A sample size of 100 GitHub repositories was used for this study.  We created a list of the 100 most popular repositories by searching GitHub for repositories with the most stars.  Because the scope of this study is limited to open source projects, only software repositories with open source licenses were used.  A list of the repositories can be found at <>.
+A sample size of 100 GitHub repositories was used for the study.  We created a list of the 100 most popular repositories by searching GitHub for repositories with the most stars.  Because the scope of the study is limited to open source projects, only software repositories with open source licenses were used.  A list of the repositories can be found at <>.
 
 (used format login/name)
 
-### Apparatus (materials)
+### Apparatus
 
 To answer the research questions, I developed a software application that accepts a list of GitHub software repositories as input and searches those repositories for codes of conduct.  The application attemps to identify the types of codes of conduct used and displays links to them.
 
@@ -51,8 +51,6 @@ The application's GitHubService class performs the repository searching and iden
 The application's RepositoryLoader class takes a text-based list of repositories in _login/name_ format and for each repository creates a new repository object.  All new repository objects are also added to a new repository set object.  
 
 hosting
-* AWS
-
 
 ### Application Preparation
 
@@ -81,26 +79,21 @@ Clone and start the application:
 
 ### Procedure
 
-1. Click the `REPOSITORY SETS` navivation link
-1. On the Repository Sets page, click the `Create New Repository Set` button
+The following procedure was used to generate the results for the study.
+
+set up codes of conduct
+
+1. Clicked the `REPOSITORY SETS` navivation link
+1. On the Repository Sets page, clicked the `Create New Repository Set` button.
 1. On the New Repository Set page
-    * Enter a name for the new set
-    * Paste in a list of GitHub repositories in login/name format (a sample list of repositories can be found at ...)
-    * Click the `Create Repository Set` button
-1. On the Repository Set page you will see the list of the GitHub repositories you added.  Click the "Run this set" button
-
-
-
-
-
-* Step by step
-  * the workflow
-    * create a set
-    * run the service
-    * view the COCs
-    * view stats
-* how long it took
-* when it was run
+    * Entered the name "Open source sample set" for the new set
+    * Pasted in a list of GitHub repositories in login/name format (the list of repositories can be found at ...)
+    * Clicked the `Create Repository Set` button.  The application created a new "set" that includes all of the entered GitHub repositories.
+1. On the Repository Set page, clicked the "Run this set" button. The application created a new background job to find codes of conduct for each GitHub repository in the set.  The job called two services:
+    * search for text
+    * search by file name
+1. After XXX hours, reloaded the "Codes Of Conduct for Set Open source sample set" page.  XXX codes of conduct were listed on the page.  
+1. View stats
 
 ## Limitations and Implications
 
