@@ -14,13 +14,13 @@ RQ1: What type of codes of conduct are used by popular open source projects?
 
 RQ2: How do popular open source projects cite their codes of conduct?
 
-RQ3: How reliably can codes of conduct be programatically identified?
+RQ3: How reliably can codes of conduct be programmatically identified?
 
 ## Methodology
 
 ### Data Source
 
-The study used data from GitHub.com.  GitHub is a collaborative software service that provides hosting for source code management and version control.  Because it facilitates collaborative development in a transparent environment, GitHub is a popular host for open source projects.  Hence, GitHub was a good source of data for the study.  There are several projects that have colleted GitHub data into datasets to faciliate research.  However, they are typically focused on transactional events (commits, comments, etc.) and only provide a snapshop of a certain point in time.  Given that some software repositories change very rapidly, existing datasets become outdated very quickly. We therefore chose to use GitHub's API for the study to directly query the serivce's live data.
+The study used data from GitHub.com.  GitHub is a collaborative software service that provides hosting for source code management and version control.  Because it facilitates collaborative development in a transparent environment, GitHub is a popular host for open source projects.  Hence, GitHub was a good source of data for the study.  There are several projects that have collected GitHub data into datasets to facilitate research.  However, they are typically focused on transactional events (commits, comments, etc.) and only provide a snapshot of a certain point in time.  Given that some software repositories change very rapidly, existing datasets become outdated very quickly. We therefore chose to use GitHub's API for the study to directly query the service's live data.
 
 GitHub's API provides an interface to most of the service's functions.  For this study in particular, we required the ability to search GitHub repositories for specific text in files or file names.  GitHub's Search API (https://docs.github.com/en/free-pro-team@latest/rest/reference/search) provided this functionality.  The Search API returns JSON results with a listing of files that match the query. For example, submitting the query "code of conduct" in:file repo:microsoft/test" will return all files in the microsoft/test repository that contain the text "code of conduct."  GitHub's API also provides the ability to search for files by filename.  
 
@@ -30,9 +30,9 @@ A sample size of 100 GitHub repositories was used for the study.  We created a l
 
 ### Apparatus
 
-To answer the research questions, I developed a software application that accepts a list of GitHub software repositories as input and searches those repositories for codes of conduct.  The application attemps to identify the types of codes of conduct used and displays links to them.
+To answer the research questions, I developed a software application that accepts a list of GitHub software repositories as input and searches those repositories for codes of conduct.  The application attempts to identify the types of codes of conduct used and displays links to them.
 
-I chose to build the application using the Ruby on Rails framework.  Using the Model, View, Controller (MVC) architecture, Ruby on Rails allows for rapid software development and was therefore a good tool for a study under time constraints.  All application content is stored in a relational database.  The application also utilizes the Octokit toolkit (http://octokit.github.io/octokit.rb/) to faciliate using the GitHub API.  To prevent abuse of the API, GItHub limits the number of API calls that can be made in a given ime period.  Fortuneately, Octokit allows for authenticated API calls, which increases the call rate.  However, the application still hit some API limits even when using an authenticated API.  This required me to insert pauses nto the application and causes the search feature to run artificially slowly.  TO alleviate this constraint I configured the API searches to run as background jobs.  Using the Sidekiq toolkit (https://sidekiq.org), the application can search code codes of conduct in the background without the user having to wait for the job to finish.
+I chose to build the application using the Ruby on Rails framework.  Using the Model, View, Controller (MVC) architecture, Ruby on Rails allows for rapid software development and was therefore a good tool for a study under time constraints.  All application content is stored in a relational database.  The application also utilizes the Octokit toolkit (http://octokit.github.io/octokit.rb/) to facilitate using the GitHub API.  To prevent abuse of the API, GitHub limits the number of API calls that can be made in a given time period.  Fortunately, Octokit allows for authenticated API calls, which increases the call rate.  However, the application still hit some API limits even when using an authenticated API.  This required me to insert pauses into the application and causes the search feature to run artificially slowly.  TO alleviate this constraint I configured the API searches to run as background jobs.  Using the Sidekiq toolkit (https://sidekiq.org), the application can search code codes of conduct in the background without the user having to wait for the job to finish.
 
 The application uses several different models:
 
@@ -44,7 +44,7 @@ The application uses several different models:
 
 * _CodeOfConductType_: Defines a type of code of conduct.  Many codes of conduct are based on other popular codes of conduct.  A _CodeOfConductType_ object represents a single type of code of conduct and stores a name and a URL to where the type is defined.  It also stores a "fingerprint", which is a string of text that can be used to identify a code of conduct's type.  A _CodeOfConductType_ object has many _CodeOfConduct_ objects.
 
-The application's GitHubService class performs the repository searching and identifies the codes of conduct.  The ID of a repository set is passed to the service.  As the service iterates through all repositories in the set, it makes GitHub Search API call for each repository.  The Search API attempts to find all files in the respoitory that match the fingerprint of one of the code of conduct types.  One of the code of conduct types has the simple fingerprint of "code of conduct" so that it will match any generic code of conduct in the repository.  For each found file, a new code of conduct object is created and associated with repository object. 
+The application's GitHubService class performs the repository searching and identifies the codes of conduct.  The ID of a repository set is passed to the service.  As the service iterates through all repositories in the set, it makes GitHub Search API call for each repository.  The Search API attempts to find all files in the repository that match the fingerprint of one of the code of conduct types.  One of the code of conduct types has the simple fingerprint of "code of conduct" so that it will match any generic code of conduct in the repository.  For each found file, a new code of conduct object is created and associated with repository object. 
 
 (search by file name)
 
@@ -83,7 +83,7 @@ The following procedure was used to generate the results for the study.
 
 set up codes of conduct
 
-1. Clicked the `REPOSITORY SETS` navivation link
+1. Clicked the `REPOSITORY SETS` navigation link
 1. On the Repository Sets page, clicked the `Create New Repository Set` button.
 1. On the New Repository Set page
     * Entered the name "Open source sample set" for the new set
