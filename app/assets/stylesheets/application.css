@@ -57,6 +57,14 @@ div.menu a {
   padding-right: 1em;
 }
 
+div.menu a:link,
+div.menu a:visited,
+div.menu a:hover,
+div.menu a:active {
+    color: #777;
+}
+
+
 .even {
   background: #ddd;
 }
