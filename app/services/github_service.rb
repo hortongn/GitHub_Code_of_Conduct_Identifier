@@ -14,7 +14,7 @@ class GithubService
       results = @github.search_code "\"#{code_of_conduct_type.fingerprint_1}\" in:file repo:#{repository.login}/#{repository.name}"
 
       results.items.each do |item|
-        unless file_is_previously_found?(item, repository)
+        unless file_is_previously_found?(item, repository) || file_is_too_deep?(item.path)
           CodeOfConduct.create(path: item.path, url: item.html_url, repository_id: repository.id, code_of_conduct_type_id: code_of_conduct_type.id)
         end
       end
@@ -27,7 +27,7 @@ class GithubService
     results = @github.search_code "filename:*code*conduct* repo:#{repository.login}/#{repository.name}"
 
     results.items.each do |item|
-      unless file_is_previously_found?(item, repository)
+      unless file_is_previously_found?(item, repository) || file_is_too_deep?(item.path)
         CodeOfConduct.create(path: item.path, url: item.html_url, repository_id: repository.id, code_of_conduct_type_id: CodeOfConductType.find_by_name("Unidentified").id)
       end
     end
@@ -36,5 +36,9 @@ class GithubService
 
   def file_is_previously_found?(item, repository)
     return true unless CodeOfConduct.where(path: item.path, repository_id: repository.id).blank?
+  end
+
+  def file_is_too_deep?(path)
+    return true if path =~ /\/.*\//
   end
 end
