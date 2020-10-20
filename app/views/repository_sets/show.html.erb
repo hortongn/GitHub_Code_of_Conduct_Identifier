@@ -4,7 +4,7 @@
 
 <div class="options">
   <%= button_to 'View codes of conduct', code_of_conduct_sets_path(@repository_set.id), method: :get %>
-  <%= button_to 'Run this set', find_codes_of_conduct_path(@repository_set.id), method: :get %>
+  <%= button_to 'Run this set', find_codes_of_conduct_path(@repository_set.id), method: :get, data: { confirm: 'This will overwrite any existing content from previous runs.  Are you sure?' } %>
   <%= button_to 'Edit set name', edit_repository_set_path(@repository_set), method: :get %>
 </div>
 
