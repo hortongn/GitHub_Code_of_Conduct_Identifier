@@ -23,4 +23,11 @@
   </tbody>
 </table>
 
-<br />
+<% unless @unmatched_repositories.blank? %>
+  <h3>Codes of Conduct could not be found for the following repositories in this set:</h3>
+  <ul>
+    <% @unmatched_repositories.each do |repository| %>
+      <li><%= repository %></li>
+    <% end %>
+  </ul>
+<% end %>

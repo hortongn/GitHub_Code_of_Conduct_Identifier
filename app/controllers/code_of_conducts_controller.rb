@@ -63,9 +63,18 @@ class CodeOfConductsController < ApplicationController
 
   def set
     @code_of_conducts = []
+    repository_array = []
+    code_of_conducts_repo_array = []
     CodeOfConduct.all.each do |code_of_conduct|
-      @code_of_conducts << code_of_conduct if code_of_conduct.repository.repository_set_id.to_s == params['repository_set_id']
+      if code_of_conduct.repository.repository_set_id.to_s == params['repository_set_id']
+        @code_of_conducts << code_of_conduct
+        code_of_conducts_repo_array << code_of_conduct.repository.login + '/' + code_of_conduct.repository.name
+      end
     end
+    RepositorySet.find(params['repository_set_id']).repositories.each do |repo|
+      repository_array << repo.login + '/' + repo.name
+    end
+    @unmatched_repositories = repository_array - code_of_conducts_repo_array.uniq
   end
 
   private
