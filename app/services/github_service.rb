@@ -14,7 +14,7 @@ class GithubService
       results = @github.search_code "\"#{code_of_conduct_type.fingerprint_1}\" in:file repo:#{repository.login}/#{repository.name}"
 
       results.items.each do |item|
-        unless file_is_previously_found?(item, repository) || file_is_too_deep?(item.path)
+        unless file_is_previously_found?(item, repository) || file_is_too_deep?(item.path) || file_has_invalid_extension?(item.path)
           CodeOfConduct.create(path: item.path, url: item.html_url, repository_id: repository.id, code_of_conduct_type_id: code_of_conduct_type.id)
         end
       end
@@ -27,7 +27,7 @@ class GithubService
     results = @github.search_code "filename:*code*conduct* repo:#{repository.login}/#{repository.name}"
 
     results.items.each do |item|
-      unless file_is_previously_found?(item, repository) || file_is_too_deep?(item.path)
+      unless file_is_previously_found?(item, repository) || file_is_too_deep?(item.path) || file_has_invalid_extension?(item.path)
         CodeOfConduct.create(path: item.path, url: item.html_url, repository_id: repository.id, code_of_conduct_type_id: CodeOfConductType.find_by_name("Unidentified").id)
       end
     end
@@ -41,4 +41,9 @@ class GithubService
   def file_is_too_deep?(path)
     return true if path =~ /\/.*\//
   end
+
+  def file_has_invalid_extension?(path)
+    return true unless path =~ /.*.md/ || path =~ /.*.txt/ || path =~ /.*.rst/ || path =~ /.*.html/
+  end
+
 end
