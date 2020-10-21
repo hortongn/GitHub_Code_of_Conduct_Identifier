@@ -6,6 +6,8 @@ class GithubService
       GithubService.new.search_repository(repo)
       GithubService.new.search_by_filename(repo)
     end
+    repository_set.running = false
+    repository_set.save
   end
 
   def search_repository(repository)

@@ -1,6 +1,12 @@
+<h2>Codes Of Conduct for Set <em><%= RepositorySet.find(params["repository_set_id"]).name %></em></h2>
+
 <p id="notice"><%= notice %></p>
 
-<h2>Codes Of Conduct for Set <em><%= RepositorySet.find(params["repository_set_id"]).name %></em></h2>
+<% unless notice %>
+  <% if RepositorySet.find(params["repository_set_id"]).running %>
+    <p id="notice">This set is still running in the background.  Results are not yet complete.</p>
+  <% end %>
+<% end %>
 
 <table>
   <thead>
@@ -23,7 +29,7 @@
   </tbody>
 </table>
 
-<% unless @unmatched_repositories.blank? %>
+<% unless @unmatched_repositories.blank? || RepositorySet.find(params["repository_set_id"]).running %>
   <h3>Codes of Conduct could not be found for the following repositories in this set:</h3>
   <ul>
     <% @unmatched_repositories.each do |repository| %>

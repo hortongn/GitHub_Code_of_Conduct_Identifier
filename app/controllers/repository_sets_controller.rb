@@ -62,6 +62,9 @@ class RepositorySetsController < ApplicationController
   end
 
   def find_codes_of_conduct
+    @repository_set = RepositorySet.find(params['repository_set_id'])
+    @repository_set.running = true
+    @repository_set.save
     delete_codes_of_conduct_for_set(params['repository_set_id'].to_i)
     FindCodesOfConductJob.perform_later params['repository_set_id']
     flash[:notice] = "Codes of conduct are being found in the backgroud and will take approximately #{total_time} minutes to complete.  Reload this page later to see them."
