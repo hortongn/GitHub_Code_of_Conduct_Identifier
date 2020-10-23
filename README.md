@@ -22,7 +22,7 @@ The study used data from GitHub.com.  GitHub is a collaborative software service
 
 GitHub's API provides an interface to most of the service's functions.  For this study in particular, we required the ability to search GitHub repositories for specific text in files or file names.  GitHub's Search API (https://docs.github.com/en/free-pro-team@latest/rest/reference/search) provided this functionality.  The Search API returns JSON results with a listing of files that match the query. For example, submitting the query "code of conduct" in:file repo:microsoft/test" will return all files in the microsoft/test repository that contain the text "code of conduct."  GitHub's API also provides the ability to search for files by filename.  
 
-A sample size of 100 GitHub repositories was used for the study.  We created a list of the 100 most popular repositories by searching GitHub for repositories with the most stars.  Because the scope of the study is limited to open source projects, only software repositories with open source licenses were used.  A list of the repositories (using the format "login/name") can be found at <>.
+A sample size of 100 GitHub repositories was used for the study.  We created a list of the 100 most popular repositories by searching GitHub for repositories with the most stars.  Because the scope of the study is limited to open source projects, only software repositories with open source licenses were used.  A list of the repositories (using the format "login/name") can be found at https://raw.githubusercontent.com/hortongn/GitHub_Code_of_Conduct_Identifier/main/public/hackernoon_repos.txt.
 
 ### Apparatus
 
@@ -76,7 +76,7 @@ The following procedure was used to generate the results for the study.  The sam
 1. On the Repository Sets page, clicked the `Create New Repository Set` button.
 1. On the New Repository Set page
     * Entered the name "Open source sample set" for the new set
-    * Pasted in a list of GitHub repositories in login/name format (the list of repositories can be found at ...)
+    * Pasted in a list of GitHub repositories in login/name format (https://raw.githubusercontent.com/hortongn/GitHub_Code_of_Conduct_Identifier/main/public/hackernoon_repos.txt)
     * Clicked the `Create Repository Set` button.  The application created a new "set" that includes all of the entered GitHub repositories.
 1. On the Repository Set page, clicked the "Run this set" button. The application created a new background job to find codes of conduct for each GitHub repository in the set.  The job called two services:
     * search for text
