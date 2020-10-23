@@ -12,7 +12,7 @@ RQ1: What types of codes of conduct are used by popular open source projects?
 
 RQ2: How do popular open source projects cite their codes of conduct?
 
-RQ3: How can codes of conduct on GitHub.com be programatically found and identified?
+RQ3: How can codes of conduct on GitHub.com be programmatically found and identified?
 
 ## Methodology
 
@@ -38,11 +38,11 @@ The application uses several different models:
 
 * _CodeOfConduct_: Stores the path of the code of conduct file in the GitHub repository as well as the URL to the file on GitHub.com.  A _CodeOfConduct_ object belongs to a single _Repository_ object and belongs to a single _CodeOfConductType_ object.
 
-* _CodeOfConductType_: Defines a type of code of conduct.  Many codes of conduct are based on other popular codes of conduct.  A _CodeOfConductType_ object represents a single type of code of conduct and stores a name and a URL to where the type is defined.  The application is currently configured to find six different types of codes of conduct.  The six most popular types found by (REFERENCE) can be viewed at <FILE LINK>.  The model also stores a "fingerprint", which is a string of text that can be used to identify a code of conduct's type.  I attempted to find a unique sentence from each type to use as a reliable fingerprint.  A _CodeOfConductType_ object has many _CodeOfConduct_ objects.
+* _CodeOfConductType_: Defines a type of code of conduct.  Many codes of conduct are based on other popular codes of conduct.  A _CodeOfConductType_ object represents a single type of code of conduct and stores a name and a URL to where the type is defined.  The application is currently configured to find six different types of codes of conduct.  The six most popular types found by (Tourani et al., 2017) can be viewed at <FILE LINK>.  The model also stores a "fingerprint", which is a string of text that can be used to identify a code of conduct's type.  I attempted to find a unique sentence from each type to use as a reliable fingerprint.  A _CodeOfConductType_ object has many _CodeOfConduct_ objects.
 
 The application's GitHubService class performs the repository searching and identifies the codes of conduct.  The ID of a repository set is passed to the service.  As the service iterates through all repositories in the set, it makes two GitHub Search API calls per repository:
 * Text search: The Search API attempts to find all files in the repository that match the fingerprint of one of the code of conduct types.  One of the code of conduct types has the simple fingerprint of "code of conduct" so that it will match any generic code of conduct in the repository.
-* File name search: The Search API attempts to find all files in the repository with the file name pattern *code*conduct*.***.  This matches all files with the word "code" followed by the word "conduct" in the file name.    
+* File name search: The Search API attempts to find all files in the repository with the file name pattern `*code*conduct*`.  This matches all files with the word "code" followed by the word "conduct" in the file name.    
 For each found file, a new code of conduct object is created and associated with repository object.
 
 The application's RepositoryLoader class takes a text-based list of repositories in _login/name_ format and for each repository creates a new repository object.  All new repository objects are also added to a new repository set object.  
@@ -62,7 +62,7 @@ Clone and start the application:
     * `machine api.github.com`
     * `  login your-username`
     * `  password your-password`
-1. Start the application and background workers:
+1. Start the application and background workers on three separate shell prompts:
     * `redis-server`
     * `bundle exec sidekiq`
     * `bundle exec rails server`
@@ -83,10 +83,15 @@ The following procedure was used to generate the results for the study.  The sam
     * search by file name
 1. After XXX hours, reloaded the "Codes Of Conduct for Set Open source sample set" page.  XXX codes of conduct were listed on the page.  
 
-After running the set of 50 hackernoon repositories, the application returned a large number of results that contained many false positives.  After manually inspecing the results, I observed several trends in the false positives:
+After running the set of 50 hackernoon repositories, the application returned a large number of results that contained many false positives.  After manually inspecting the results, I observed several trends in the false positives:
 * A single file sometimes appeared twice in the results because it was identified by both the text search algorithm and the filename search algorithm.  I resolved this by adding a filter that ignored files if they've already been found
 * Actual code of conduct files are always found in the root of the repository or in a single directory below the root.  Many false positive files that included the phrase "code of conduct" we showing up two, three, or more levels deep.  I resolved this by adding a filter that ignored files more than one directory deep in the repository.
 * Actual code of conduct files almost always have the file name extension .md, .txt, .rst, or .html.  Many false positive files with other file name extensions were showing up in the results.  I resolved this by adding a filter that ignored files without the above file name extensions.
+* I made slight adjustments to the fingerprints for the code of conduct types to better match real codes of conduct.
+
+I also observed that some files in the results simply had links to the code of conduct instead of actually containing the code of conduct in the file.  However, I chose to keep the behavior since it did help identify where the legitimate code of conduct resided.
+
+After making the adjustments above, I ran the entire procedure again and generated the new results.
 
 ## Analysis
 
@@ -107,3 +112,5 @@ API Limitations
 ## Conclusions
 
 ## References
+
+Tourani, P., Adams, B., & Serebrenik, A. (2017). Code of conduct in open source projects. *2017 IEEE 24th International Conference on Software Analysis, Evolution and Reengineering (SANER)*, 24–33. https://doi.org/10.1109/SANER.2017.7884606
