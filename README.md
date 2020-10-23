@@ -52,8 +52,8 @@ The application's RepositoryLoader class takes a text-based list of repositories
 Prerequisite: ruby 2.5 or newer
 
 Clone and start the application:
-1. Clone the application: `git clone https://github.com/hortongn/IT_Project.git`
-1. Change to the application directory: `cd IT_Project`
+1. Clone the application: `https://github.com/hortongn/GitHub_Code_of_Conduct_Identifier.git`
+1. Change to the application directory: `cd GitHub_Code_of_Conduct_Identifier`
 1. Install Bundler: `gem install bundler`
 1. Run Bundler: `bundle install`
 1. Run the migrations: `bundle exec rails db:migrate`
