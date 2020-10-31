@@ -69,6 +69,6 @@ class CodeOfConductTypesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def code_of_conduct_type_params
-      params.require(:code_of_conduct_type).permit(:name, :url, :fingerprint_1, :fingerprint_2)
+      params.require(:code_of_conduct_type).permit(:name, :url, :fingerprint_1)
     end
 end

@@ -4,10 +4,8 @@ one:
   name: MyString
   url: MyString
   fingerprint_1: FingerprintText1
-  fingerprint_2: FingerprintText2
 
 two:
   name: MyString
   url: MyString
   fingerprint_1: FingerprintText1
-  fingerprint_2: FingerprintText2

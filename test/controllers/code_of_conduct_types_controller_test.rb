@@ -17,7 +17,7 @@ class CodeOfConductTypesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create code_of_conduct_type" do
     assert_difference('CodeOfConductType.count') do
-      post code_of_conduct_types_url, params: { code_of_conduct_type: { name: @code_of_conduct_type.name, url: @code_of_conduct_type.url, fingerprint_1: @code_of_conduct_type.fingerprint_1, fingerprint_2: @code_of_conduct_type.fingerprint_2 } }
+      post code_of_conduct_types_url, params: { code_of_conduct_type: { name: @code_of_conduct_type.name, url: @code_of_conduct_type.url, fingerprint_1: @code_of_conduct_type.fingerprint_1 } }
     end
 
     assert_redirected_to code_of_conduct_type_url(CodeOfConductType.last)
@@ -34,7 +34,7 @@ class CodeOfConductTypesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update code_of_conduct_type" do
-    patch code_of_conduct_type_url(@code_of_conduct_type), params: { code_of_conduct_type: { name: @code_of_conduct_type.name, url: @code_of_conduct_type.url, fingerprint_1: @code_of_conduct_type.fingerprint_1, fingerprint_2: @code_of_conduct_type.fingerprint_2 } }
+    patch code_of_conduct_type_url(@code_of_conduct_type), params: { code_of_conduct_type: { name: @code_of_conduct_type.name, url: @code_of_conduct_type.url, fingerprint_1: @code_of_conduct_type.fingerprint_1 } }
     assert_redirected_to code_of_conduct_type_url(@code_of_conduct_type)
   end
 

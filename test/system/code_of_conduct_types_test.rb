@@ -17,7 +17,6 @@ class CodeOfConductTypesTest < ApplicationSystemTestCase
     fill_in "Name", with: @code_of_conduct_type.name
     fill_in "Url", with: @code_of_conduct_type.url
     fill_in "Fingerprint 1", with: @code_of_conduct_type.fingerprint_1
-    fill_in "Fingerprint 2", with: @code_of_conduct_type.fingerprint_2
     click_on "Create Code of conduct type"
 
     assert_text "Code of conduct type was successfully created"
@@ -31,7 +30,6 @@ class CodeOfConductTypesTest < ApplicationSystemTestCase
     fill_in "Name", with: @code_of_conduct_type.name
     fill_in "Url", with: @code_of_conduct_type.url
     fill_in "Fingerprint 1", with: @code_of_conduct_type.fingerprint_1
-    fill_in "Fingerprint 2", with: @code_of_conduct_type.fingerprint_2
     click_on "Update Code of conduct type"
 
     assert_text "Code of conduct type was successfully updated"
