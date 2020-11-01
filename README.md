@@ -79,7 +79,7 @@ The following procedure was used to generate the results for the study.  The sam
 1. On the Repository Set page, clicked the "Run this set" button. The application created a new background job to find codes of conduct for each GitHub repository in the set.  The job called two services:
     * search for text
     * search by file name
-1. After approximately 200 minutes, reloaded the "Codes Of Conduct for Set Open source sample set" page to view the results.
+1. After approximately 400 minutes, reloaded the "Codes Of Conduct for Set Open source sample set" page to view the results.
 
 After running the set of 50 hackernoon repositories, the application returned a large number of results that contained many false positives.  After manually inspecting the results, I observed several trends in the false positives:
 * A single file sometimes appeared twice in the results because it was identified by both the text search algorithm and the filename search algorithm.  I resolved this by adding a filter that ignored files if they had already been found.
