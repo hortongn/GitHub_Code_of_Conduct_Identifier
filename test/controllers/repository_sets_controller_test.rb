@@ -10,11 +10,6 @@ class RepositorySetsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get new" do
-    get new_repository_set_url
-    assert_response :success
-  end
-
   test "should create repository_set" do
     assert_difference('RepositorySet.count') do
       post repository_sets_url, params: { repository_set: { name: @repository_set.name } }
