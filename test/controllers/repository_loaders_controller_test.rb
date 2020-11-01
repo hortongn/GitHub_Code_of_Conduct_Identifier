@@ -5,11 +5,6 @@ class RepositoryLoadersControllerTest < ActionDispatch::IntegrationTest
     @repository_loader = repository_loaders(:one)
   end
 
-  test "should get index" do
-    get repository_loaders_url
-    assert_response :success
-  end
-
   test "should get new" do
     get new_repository_loader_url
     assert_response :success
@@ -21,16 +16,6 @@ class RepositoryLoadersControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to repository_set_url(RepositorySet.last)
-  end
-
-  test "should show repository_loader" do
-    get repository_loader_url(@repository_loader)
-    assert_response :success
-  end
-
-  test "should get edit" do
-    get edit_repository_loader_url(@repository_loader)
-    assert_response :success
   end
 
   test "should update repository_loader" do
