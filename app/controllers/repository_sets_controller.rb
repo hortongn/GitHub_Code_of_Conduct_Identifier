@@ -54,6 +54,13 @@ class RepositorySetsController < ApplicationController
   # DELETE /repository_sets/1
   # DELETE /repository_sets/1.json
   def destroy
+    @repository_set.repositories.each do |repo|
+      repo.code_of_conducts.each do |coc|
+        coc.delete
+      end
+      repo.delete
+    end
+
     @repository_set.destroy
     respond_to do |format|
       format.html { redirect_to repository_sets_url, notice: 'Repository set was successfully destroyed.' }
