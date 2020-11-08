@@ -99,7 +99,7 @@ table {
 
 .actions input,
 .button_to input {
-  font-size: 1em;
+  font-size: 0.75em;
   padding: 0.4em;
   background-color: #F7E9D4;
 }
