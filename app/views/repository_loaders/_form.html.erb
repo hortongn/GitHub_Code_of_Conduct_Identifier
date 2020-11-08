@@ -12,13 +12,13 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :set_name %>
-    <%= form.text_field :set_name %>
+    <%= form.label :set_name, "Enter a name for the new set:" %>
+    <%= form.text_field :set_name, size: "50" %>
   </div>
 
   <div class="field">
-    <%= form.label :repository_list, "List of repositories (login/name)" %>
-    <%= form.text_area :repository_list %>
+    <%= form.label :repository_list, "Enter a list of GitHub repositories in login/name format:" %>
+    <%= form.text_area :repository_list, cols: "41", rows: "10" %>
   </div>
 
   <div class="actions">

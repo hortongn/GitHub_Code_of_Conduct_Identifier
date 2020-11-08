@@ -12,18 +12,18 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.label :name, "Enter a name for the code of conduct type:" %>
+    <%= form.text_field :name, size: "50" %>
   </div>
 
   <div class="field">
-    <%= form.label :url %>
-    <%= form.text_field :url %>
+    <%= form.label :url, "Enter the URL to the code of conduct type:" %>
+    <%= form.text_field :url, size: "50" %>
   </div>
 
   <div class="field">
-    <%= form.label :fingerprint_1 %>
-    <%= form.text_area :fingerprint_1 %>
+    <%= form.label :fingerprint_1, "Enter some text that can be used to identify the code of conduct type" %>
+    <%= form.text_area :fingerprint_1, cols: "50" %>
   </div>
 
   <div class="actions">
